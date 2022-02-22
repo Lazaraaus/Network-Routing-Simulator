@@ -23,15 +23,16 @@ class Sim(Topology):
         return ans
 
     def dump_sim(self):
+        temp_var = 1
         self.logging.info("DUMP_SIM at Time %d\n" % Get_Time() + str(self))
 
     def dispatch_event(self, step='NORMAL'):
         e = Event_Queue.Get_Earliest()
         while e:
             e.dispatch()
-            if step == 'SINGLE_STEP':
-                self.logging.info(str(e))
-                self.wait()
+            #if step == 'SINGLE_STEP':
+            self.logging.info(str(e))
+            self.wait()
             e = Event_Queue.Get_Earliest()
 
     def print_comment(self, comment):
