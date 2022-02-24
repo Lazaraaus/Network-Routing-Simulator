@@ -2,11 +2,22 @@ from simulator.node import Node
 import json
 import math
 
+#######################################################################################################################################
+#                                                           Attributtions                                                             #
+#                                                                                                                                     #
+# General Framework for Dijkstra's implementation taken from grokking algorithmns by Aditya Y. Bhargava                               #
+# C++ Implementations fo DV: https://ankurm.com/implementation-of-distance-vector-routing-dvr-algorithm-in-c/                         #
+#                            https://github.com/Subangkar/Distance-Vector-Routing-Protocol-CPP-Implementation/blob/master/router.cpp  #
+# C++ Implementations for Link State:                                                                                                 #
+#                             https://github.com/vkakde/linkStateRouting/blob/master/LinkStateRouting.cpp                             #
+#                                                                                                                                     #
+# Kurose 8th Edition Pseudocode                                                                                                       #
+#######################################################################################################################################
 class Link_State_Node(Node):
     def __init__(self, id):
         super().__init__(id)
         # KEYS (Node1, Node2) 2-tuple
-        # Change key to frozenset so we don't have to double updates
+        # Change key to frozenset so we don't have to double updates - frozenset is unserializable, double updates stay
         self.link_latency = {} # Dict to hold the weights of the links
         self.edges_sq_num = {} # Dict to hold the sequence # for each link
     # Return a string

@@ -2,13 +2,22 @@ from simulator.node import Node
 import copy
 import json
 
+#######################################################################################################################################
+#                                                           Attributtions                                                             #
+#                                                                                                                                     #
+# General Framework for Dijkstra's implementation taken from grokking algorithmns by Aditya Y. Bhargava                               #
+# C++ Implementations fo DV: https://ankurm.com/implementation-of-distance-vector-routing-dvr-algorithm-in-c/                         #
+#                            https://github.com/Subangkar/Distance-Vector-Routing-Protocol-CPP-Implementation/blob/master/router.cpp  #
+# C++ Implementations for Link State:                                                                                                 #
+#                             https://github.com/vkakde/linkStateRouting/blob/master/LinkStateRouting.cpp                             #
+#######################################################################################################################################
 class Distance_Vector_Node(Node):
     def __init__(self, id):
         super().__init__(id)
         # Class Attributes
-        self.route_table = {} # node: {} -> keys: ['latency', 'path', 'seq_num?'] -> 'latency': latency, 'path': [list of nodes], 'seq_num':seq_num
-        self.link_costs = {} # node:{} -> keys: ['latency', 'neighbor']
-        self.neighbors_rout_table = {} # neighbor: {}  -> keys:['latency', 'path'] # Need Seq_nums
+        self.route_table = {} # node: {} -> keys: ['latency', 'path'] -> 'latency': latency, 'path': [list of nodes]
+        self.link_costs = {} # node:{} -> keys: ['latency', 'neighbor', 'path']
+        self.neighbors_rout_table = {} # neighbor: {}  -> keys:['latency', 'path']
         self.seq_num = 0 # Node Seq Num
         self.neighbors_seq_num = {}
     # Return a string
