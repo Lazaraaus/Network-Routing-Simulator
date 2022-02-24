@@ -164,7 +164,7 @@ class Topology:
     def get_user_path(self, source, destination):
         path = [source]
         length = 0
-        print("\nGETTING USER SPECIFIED NETWORK PATH\n")
+        #print("\nGETTING USER SPECIFIED NETWORK PATH\n")
         while destination not in path:
             next = Topology.Nodes[path[-1]].get_next_hop(destination)
             if next == None:

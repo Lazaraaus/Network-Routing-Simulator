@@ -30,9 +30,9 @@ class Sim(Topology):
         e = Event_Queue.Get_Earliest()
         while e:
             e.dispatch()
-            #if step == 'SINGLE_STEP':
-            self.logging.info(str(e))
-            self.wait()
+            if step == 'SINGLE_STEP':
+                self.logging.info(str(e))
+                self.wait()
             e = Event_Queue.Get_Earliest()
 
     def print_comment(self, comment):
